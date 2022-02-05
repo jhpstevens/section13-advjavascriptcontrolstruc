@@ -16,7 +16,7 @@ function calculateSum() {
 
   outputResultElement.textContent = sumUpToNumber;
   outputResultElement.style.display = "block";
-  return sumUpToNumber;
+  
 }
 
 calculateSumButtonElement.addEventListener("click", calculateSum);
@@ -38,3 +38,32 @@ function highlightLinks() {
 
 hightlightLinksButtonElement.addEventListener("click", highlightLinks);
 
+// Third example: use dummy data in object and display it
+
+const dummyUserData = {
+  firstName: 'Hans',
+  lastName: 'Kazan',
+  age: 32
+};
+
+const displayUserDataButtonElement = document.querySelector('#user-data button');
+
+function displayUserData () {
+  const outputDataElement = document.getElementById('output-user-data');
+
+  outputDataElement.innerHTML =''; //remove conmtent from other click
+
+  for ( const  key in dummyUserData) {
+    // create li element
+    const newUserDataListItemElement = document.createElement('li');
+
+    // get user data from obkect
+    const outputText = key.toUpperCase() + ': ' + dummyUserData[key];
+    newUserDataListItemElement.textContent = outputText;
+
+    // append li element
+    outputDataElement.append(newUserDataListItemElement);
+  }
+}
+
+displayUserDataButtonElement.addEventListener('click' , displayUserData);
